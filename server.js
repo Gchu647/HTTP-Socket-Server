@@ -1,8 +1,9 @@
 const net = require('net');
+const homePage = require('./homepage_data');
 const hydro = require('./hydro_data');
 const helium = require('./helium_data');
+const webStyle = require('./style_data');
 const incorrect = require('./incorrect_path');
-const homePage = require('./homepage_data');
 
 
 let server = net.createServer(function(socket) {
@@ -10,15 +11,35 @@ let server = net.createServer(function(socket) {
   socket.setEncoding('UTF8');
 
   socket.on('data', function(request) {
-    let resource = request.split(' ', 2)[1];
+    let resource = request.split(' ', 2)[1]; //Takes out the resource from the long request string
     console.log(resource);
-    socket.write(homePage.content);
+
+    switch(resource) {
+      case('/'):
+        socket.write(homePage.content);
+        break;
+      case('/index.html'):
+        socket.write(homePage.content);
+        break;
+      case('/hydrogen.html'):
+        socket.write(hydro.content);
+        break;
+      case('/helium.html'):
+        socket.write(helium.content);
+        break;
+        case('/css/styles.css'):
+        socket.write(webStyle.content);
+        break;
+      default:
+      socket.write(incorrect.content);
+    }
 
     socket.end();
   });
+
 })
 
-server.listen(8640);
+server.listen(8640, 'localhost');
 
 /*
 socket.write(
