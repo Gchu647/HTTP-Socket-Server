@@ -3,7 +3,6 @@ content:`HTTP/1.1 200 OK
 Server: gchu/1.4.6 (Ubuntu) 
 Date: ${new Date()}
 Content-Type: text/html; charset=utf-8
-Content-Length: 40489 
 Connection: keep-alive
 
 <!DOCTYPE html>

@@ -34,7 +34,7 @@ let server = net.createServer(function(socket) {
       socket.write(incorrect.content);
     }
 
-    socket.end();
+    socket.destroy();
   });
 
 })
