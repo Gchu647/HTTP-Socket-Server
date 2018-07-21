@@ -12,7 +12,8 @@ let server = net.createServer(function(socket) {
 
   socket.on('data', function(request) {
     let resource = request.split(' ', 2)[1]; //Takes out the resource from the long request string
-    console.log(resource);
+    console.log("Request: ",request);
+    console.log("Resources: ", resource);
 
     switch(resource) {
       case('/'):
@@ -52,13 +53,3 @@ Connection: keep-alive
 
 `);
 */
-
-
-`GET / HTTP/1.1
-cache-control: no-cache
-Postman-Token: b7647b5d-255f-4a55-9677-b3148277cc95
-User-Agent: PostmanRuntime/7.1.5
-Accept: */*
-Host: localhost:8640
-accept-encoding: gzip, deflate
-Connection: keep-alive`
