@@ -1,6 +1,6 @@
 module.exports = {
 content:`HTTP/1.1 200 OK
-Server: gchu/1.4.6 (Ubuntu) 
+Server: localhost:8640 
 Date: ${new Date()}
 Content-Type: text/html; charset=utf-8
 Connection: keep-alive
