@@ -1,11 +1,11 @@
 let net = require('net');
 let requestURI = process.argv[2];
 let requestHeader = `GET ${requestURI} HTTP/1.1
+Date: ${new Date()}
 Host: localhost:8640
 Connection: keep-alive
 User-Agent: client.js
 Accept: text/html, text/css
-Date: ${new Date()}
 
 `;
 

@@ -12,10 +12,12 @@ let server = net.createServer(function(socket) {
 
   socket.on('data', function(request) {
     let resource = request.split(' ', 2)[1]; //Takes out the resource from the long request string
-    console.log("Request: ",request);
-    console.log("Resources: ", resource);
+    let index = resource.indexOf('/');
+    let resourceSlice = resource.slice(index); //Removes whatevers was before '/'
+    console.log('Request: ',request);
+    console.log('Resources: ', resourceSlice);
 
-    switch(resource) {
+    switch(resourceSlice) {
       case('/'):
         socket.write(homePage.content);
         break;
