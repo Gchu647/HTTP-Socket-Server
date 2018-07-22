@@ -7,7 +7,7 @@ const incorrect = require('./incorrect_path');
 
 
 let server = net.createServer(function(socket) {
-  console.log("A client is connected");
+  process.stdout.write('A client is connected');
   socket.setEncoding('UTF8');
 
   socket.on('data', function(request) {
