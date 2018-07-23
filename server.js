@@ -7,17 +7,19 @@ const incorrect = require('./incorrect_path');
 
 
 let server = net.createServer(function(socket) {
-  process.stdout.write('A client is connected');
+  process.stdout.write('A client is connected \n');
   socket.setEncoding('UTF8');
 
   socket.on('data', function(request) {
-    let resource = request.split(' ', 2)[1]; //Takes out the resource from the long request string
-    let index = resource.indexOf('/');
-    let resourceSlice = resource.slice(index); //Removes whatevers was before '/'
-    console.log('Request: ',request);
-    console.log('Resources: ', resourceSlice);
+    let requestURI = request.split(' ', 2)[1]; //Takes out the resource from the long request string
+    let index = requestURI.indexOf('/');
+    let url = requestURI.slice(index); //Removes whatevers was before '/'
+    console.log('RequestURI: ',requestURI);
+    console.log('url: ', url);
 
-    switch(resourceSlice) {
+    //If just localhost and no url, then make it /index.html
+
+    switch(url) {
       case('/'):
         socket.write(homePage.content);
         break;
@@ -37,7 +39,6 @@ let server = net.createServer(function(socket) {
       socket.write(incorrect.content);
     }
 
-    socket.destroy();
   });
 
 })
